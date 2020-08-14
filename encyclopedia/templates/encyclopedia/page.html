@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{entry}}</h1>
- 	<p class="text-justify">{{content}}</p>
+    <div>
+ 	{{ content|safe }}
+ 	</div>
+ 	<div>
+ 		<a class="btn btn-success" href="{% url 'ency:edit' entry %}" role="button">Edit page</a>
+ 	</div>
 {% endblock %}

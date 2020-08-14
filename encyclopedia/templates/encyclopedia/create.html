@@ -1,0 +1,31 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create new page
+{% endblock %}
+
+{% block body %}
+    <form action="{% url 'ency:create' %}" method="post">
+    	{% csrf_token %}
+    	<div class="form-group">
+    		<label for="exampleFormControlInput1">Title</label>
+    		<input id = "input"class="form-control" type="text" name="title" value="{{ entry }}">
+    	</div>
+    	<div class="form-group">
+    		<label for="exampleFormControlTextarea1">Content</label>
+    		<textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ content }}</textarea>
+  		</div>
+  		<button type="submit" class="btn btn-primary">Create</button>
+    </form>
+    <div>
+    {% for message in messages %}
+
+                    <div class="alert alert-danger" role="alert">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+    <div>
+{% endblock %}

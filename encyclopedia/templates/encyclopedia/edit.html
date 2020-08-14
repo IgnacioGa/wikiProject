@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{entry}}
+{% endblock %}
+
+{% block body %}
+	<form action="{% url 'ency:edit' entry %}" method="post">
+    	{% csrf_token %}
+    	<div class="form-group">
+    		<label for="exampleFormControlInput1">Title</label>
+    		<input id = "input"class="form-control" type="text" name="title" value="{{ entry }}" readonly>
+    	</div>
+ 		<div class="form-group">
+    		<label for="exampleFormControlTextarea1">Content</label>
+    		<textarea name="editable" class="form-control" id="exampleFormControlTextarea1" rows="15">{{ txtedit }}</textarea>
+  		</div>
+ 		<div>
+ 			<button type="submit" class="btn btn-success">Save changes</button>			
+ 		</div>
+ 	</form>
+{% endblock %}
